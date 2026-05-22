@@ -10,7 +10,7 @@ Modelagem de migração de infraestrutura on prem para cloud AWS
 - [X] Criar Subrede Privada 1: `10.0.3.0/24` (Zona A).
 - [X] Criar Subrede Privada 2: `10.0.4.0/24` (Zona B).
 - [X] Criar e anexar um Internet Gateway à VPC.
-- [] Criar um NAT Gateway na Subrede Pública 1 (`10.0.1.0/24`).
+- [ ] Criar um NAT Gateway na Subrede Pública 1 (`10.0.1.0/24`).
 - [ ] Configurar a tabela de roteamento das subredes públicas para direcionar o tráfego para o Internet Gateway.
 - [ ] Configurar a tabela de roteamento das subredes privadas para direcionar o tráfego para o NAT Gateway.
 
