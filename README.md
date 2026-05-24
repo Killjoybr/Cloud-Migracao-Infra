@@ -16,7 +16,7 @@ Modelagem de migração de infraestrutura on prem para cloud AWS
 
 ### 2. Grupos de Segurança (Security Groups)
 - [X] Criar Grupo de Segurança para instâncias EC2 (Permitir entrada HTTP, HTTPS e SSH).
-- [ ] Criar Grupo de Segurança para o banco de dados RDS (Permitir tráfego apenas das instâncias EC2).
+- [X] Criar Grupo de Segurança para o banco de dados RDS (Permitir tráfego apenas das instâncias EC2).
 
 ### 3. Computação e Armazenamento (EC2 e EBS)
 - [X] Lançar instâncias EC2 nas subredes públicas para atuar como servidores web e de aplicação.
@@ -25,18 +25,18 @@ Modelagem de migração de infraestrutura on prem para cloud AWS
 
 ### 4. Banco de Dados (RDS)
 - [X] Criar um banco de dados relacional nas subredes privadas.
+- [ ] Configurar conexão com endpoint ec2 e certificado ssl AWS.
+- [X] Criar tabela usuarios.
+- [X] Criar tabela produtos.
+- [X] Criar tabela pedidos.
 
 ### 5. Serviços Serverless (S3 e Lambda)
-- [ ] Criar um bucket S3 com o nome `pedido-novo`.
-- [ ] Criar função AWS Lambda para leitura de arquivo no S3 e envio de e-mail.
-- [ ] **Ajuste de Lab:** Na criação do Lambda, usar a função de execução existente chamada `LabRole`.
-- [ ] **Ajuste de Lab:** Configurar o Lambda para utilizar o serviço **SendGrid** em vez do Amazon SES (criar conta, gerar API Key e instalar a dependência `sendgrid` num pacote `.zip`).
-- [ ] Configurar as variáveis de ambiente `SOURCE_EMAIL` e `SENDGRID_API_KEY` na função Lambda.
-- [ ] Configurar gatilho (Trigger) no bucket S3 para acionar a função Lambda com o evento de "Todos os eventos de criação de objeto".
-- [ ] Realizar teste da função Lambda utilizando um evento JSON simulado do S3.
+- [X] Criar um bucket S3 com o nome `pedido-novo`.
+- [X] Criar função AWS Lambda para leitura de arquivo no S3 e envio de e-mail.
+- [X] Configurar gatilho (Trigger) no bucket S3 para acionar a função Lambda com o evento de "Todos os eventos de criação de objeto".
 
 ### 6. Entregáveis Finais do Projeto
 - [ ] Diagrama de arquitetura evidenciando os componentes e interconexões (sugestão: Draw.io).
-- [ ] Capturas de tela comprovando as configurações feitas no console da AWS.
+- [X] Capturas de tela comprovando as configurações feitas no console da AWS.
 - [ ] Relatório documentando a configuração das instâncias EC2 (hospedagem web e lógica de negócios).
 - [ ] Documentação com as etapas, justificativas e implementação das funções Lambda integradas aos serviços.
