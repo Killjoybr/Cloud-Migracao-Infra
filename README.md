@@ -10,9 +10,9 @@ Modelagem de migração de infraestrutura on prem para cloud AWS
 - [X] Criar Subrede Privada 1: `10.0.3.0/24` (Zona A).
 - [X] Criar Subrede Privada 2: `10.0.4.0/24` (Zona B).
 - [X] Criar e anexar um Internet Gateway à VPC.
-- [ ] Criar um NAT Gateway na Subrede Pública 1 (`10.0.1.0/24`).
-- [ ] Configurar a tabela de roteamento das subredes públicas para direcionar o tráfego para o Internet Gateway.
-- [ ] Configurar a tabela de roteamento das subredes privadas para direcionar o tráfego para o NAT Gateway.
+- [X] Criar um NAT Gateway na Subrede Pública 1 (`10.0.1.0/24`).
+- [X] Configurar a tabela de roteamento das subredes públicas para direcionar o tráfego para o Internet Gateway.
+- [X] Configurar a tabela de roteamento das subredes privadas para direcionar o tráfego para o NAT Gateway.
 
 ### 2. Grupos de Segurança (Security Groups)
 - [X] Criar Grupo de Segurança para instâncias EC2 (Permitir entrada HTTP, HTTPS e SSH).
@@ -25,7 +25,7 @@ Modelagem de migração de infraestrutura on prem para cloud AWS
 
 ### 4. Banco de Dados (RDS)
 - [X] Criar um banco de dados relacional nas subredes privadas.
-- [ ] Configurar conexão com endpoint ec2 e certificado ssl AWS.
+- [X] Configurar conexão com endpoint ec2 e certificado ssl AWS.
 - [X] Criar tabela usuarios.
 - [X] Criar tabela produtos.
 - [X] Criar tabela pedidos.
@@ -38,5 +38,5 @@ Modelagem de migração de infraestrutura on prem para cloud AWS
 ### 6. Entregáveis Finais do Projeto
 - [ ] Diagrama de arquitetura evidenciando os componentes e interconexões (sugestão: Draw.io).
 - [X] Capturas de tela comprovando as configurações feitas no console da AWS.
-- [ ] Relatório documentando a configuração das instâncias EC2 (hospedagem web e lógica de negócios).
-- [ ] Documentação com as etapas, justificativas e implementação das funções Lambda integradas aos serviços.
+- [X] Relatório documentando a configuração das instâncias EC2 (hospedagem web e lógica de negócios).
+- [X] Documentação com as etapas, justificativas e implementação das funções Lambda integradas aos serviços.
