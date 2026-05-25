@@ -21,7 +21,7 @@ Modelagem de migração de infraestrutura on prem para cloud AWS
 ### 3. Computação e Armazenamento (EC2 e EBS)
 - [X] Lançar instâncias EC2 nas subredes públicas para atuar como servidores web e de aplicação.
 - [X] Anexar volumes EBS às instâncias EC2 para armazenamento persistente.
-- [ ] Configurar código na aplicação web para salvar um arquivo JSON de cada pedido no bucket S3.
+- [X] Configurar código na aplicação web para salvar um arquivo JSON de cada pedido no bucket S3.
 
 ### 4. Banco de Dados (RDS)
 - [X] Criar um banco de dados relacional nas subredes privadas.
@@ -36,7 +36,7 @@ Modelagem de migração de infraestrutura on prem para cloud AWS
 - [X] Configurar gatilho (Trigger) no bucket S3 para acionar a função Lambda com o evento de "Todos os eventos de criação de objeto".
 
 ### 6. Entregáveis Finais do Projeto
-- [ ] Diagrama de arquitetura evidenciando os componentes e interconexões (sugestão: Draw.io).
+- [X] Diagrama de arquitetura evidenciando os componentes e interconexões (sugestão: Draw.io).
 - [X] Capturas de tela comprovando as configurações feitas no console da AWS.
 - [X] Relatório documentando a configuração das instâncias EC2 (hospedagem web e lógica de negócios).
 - [X] Documentação com as etapas, justificativas e implementação das funções Lambda integradas aos serviços.
