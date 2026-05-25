@@ -1,0 +1,62 @@
+graph TB
+    subgraph AWS_Cloud ["AWS Cloud"]
+        subgraph VPC ["VPC (10.0.0.0/16)"]
+            IGW["Internet Gateway (IGW)"]
+            
+            subgraph AZ_A ["Zona de Disponibilidade A"]
+                subgraph Pub_Sub1 ["Subrede Pública 1 (10.0.1.0/24)"]
+                    EC2_A["Servidor Web EC2 (App)"]
+                    NAT_GW["NAT Gateway"]
+                end
+                
+                subgraph Priv_Sub1 ["Subrede Privada 1 (10.0.3.0/24)"]
+                    RDS_Primary[("Banco de Dados RDS (Primary)")]
+                end
+            end
+
+            subgraph AZ_B ["Zona de Disponibilidade B"]
+                subgraph Pub_Sub2 ["Subrede Pública 2 (10.0.2.0/24)"]
+                    EC2_B["Servidor Web EC2 (App)"]
+                end
+                
+                subgraph Priv_Sub2 ["Subrede Privada 2 (10.0.4.0/24)"]
+                    RDS_Standby[("Banco de Dados RDS (Standby)")]
+                end
+            end
+        end
+
+        %% Componentes Fora da VPC / Serviços Globais e Regionais
+        S3_Bucket[["Bucket S3 (pedido-novo)"]]
+        Lambda_Func[["Função AWS Lambda"]]
+        SES_Service["Amazon SES (Simple Email Service)"]
+    end
+
+    %% Fluxo de Tráfego de Usuários e Internet Externa
+    Internet((Internet)) -->|HTTP / HTTPS| IGW
+    IGW --> EC2_A
+    IGW --> EC2_B
+
+    %% Conexões de Rede e Roteamento Interno
+    EC2_A -->|Acesso aos Dados| RDS_Primary
+    EC2_B -->|Acesso aos Dados| RDS_Primary
+    RDS_Primary -.->|Replicação Multi-AZ| RDS_Standby 
+    
+    %% Saída de Internet para a Subrede Privada via NAT Gateway
+    RDS_Primary -->|Atualizações de Software| NAT_GW
+    NAT_GW --> IGW
+
+    %% Fluxo da Aplicação e Integração Serverless
+    EC2_A -->|Salva JSON do Pedido| S3_Bucket
+    EC2_B -->|Salva JSON do Pedido| S3_Bucket
+    S3_Bucket -->|Gatilho: Novo Objeto Criado| Lambda_Func
+    Lambda_Func -->|Envia Email de Confirmação| SES_Service
+    SES_Service -->|Email enviado ao Cliente| Internet
+
+    %% Estilização de Grupos de Segurança e Isolamento
+    classDef publicSubnet fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
+    classDef privateSubnet fill:#ffe0b2,stroke:#f57c00,stroke-width:2px;
+    classDef awsService fill:#f9f9f9,stroke:#ff9900,stroke-width:2px;
+    
+    class Pub_Sub1,Pub_Sub2 publicSubnet;
+    class Priv_Sub1,Priv_Sub2 privateSubnet;
+    class S3_Bucket,Lambda_Func,SES_Service awsService;
